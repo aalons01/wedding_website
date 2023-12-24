@@ -28,7 +28,7 @@
             ].join(''));
             return '<a class="icon-google" target="_blank" href="' +
                 href + '">Google Calendar</a>';
-        },
+        }/*,
 
         yahoo: function(event) {
             var eventDuration = event.end ?
@@ -91,15 +91,15 @@
 
         outlook: function(event) {
             return this.ics(event, 'icon-outlook', 'Outlook');
-        }
+        }*/
     };
 
     var generateCalendars = function(event) {
         return {
-            google: calendarGenerators.google(event),
+            google: calendarGenerators.google(event)/*,
             yahoo: calendarGenerators.yahoo(event),
             ical: calendarGenerators.ical(event),
-            outlook: calendarGenerators.outlook(event)
+            outlook: calendarGenerators.outlook(event)*/
         };
     };
 

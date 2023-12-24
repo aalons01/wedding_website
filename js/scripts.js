@@ -214,25 +214,20 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>¡Un segundo!</strong> Se estan guardando tus datos.'));
 
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
-        } else {
-            $.post('https://script.google.com/macros/s/AKfycbyr-45lZovKPw4JWAWyroIpvxrGL2VxdP7U7fYK0vlz-E1gbEUwIclszDBkIgTUIshCZA/exec', data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
-                    } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
-                    }
-                })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>¡Lo siento!</strong> Hay algun problema con el servidor. '));
-                });
-        }
+        $.post('https://script.google.com/macros/s/AKfycbyr-45lZovKPw4JWAWyroIpvxrGL2VxdP7U7fYK0vlz-E1gbEUwIclszDBkIgTUIshCZA/exec', data)
+            .done(function (data) {
+                console.log(data);
+                if (data.result === "error") {
+                    $('#alert-wrapper').html(alert_markup('danger', data.message));
+                } else {
+                    $('#alert-wrapper').html('');
+                    $('#rsvp-modal').modal('show');
+                }
+            })
+            .fail(function (data) {
+                console.log(data);
+                $('#alert-wrapper').html(alert_markup('danger', '<strong>¡Lo siento!</strong> Hay algun problema con el servidor. '));
+            });
     });
 
 });
@@ -254,24 +249,24 @@ $(document).ready(function () {
     });
 }
 */
-function initMap(){
-	var myLatLng = {lat: -24.8388139, lng: -65.4685065};
-	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		zoom: 15,
-        	center: myLatLng,
-        	scrollwheel: false,
-        	});
-      	//var icon = 'assets/dist/img/company/map-marker.png'
-      	var marker = new google.maps.Marker({
-        	position: myLatLng,
-        	map: map//,
-        	//icon: icon,
-        	//title: 'Hello World!'
-        });
+function initMap() {
+    var myLatLng = { lat: -24.8388139, lng: -65.4685065 };
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 15,
+        center: myLatLng,
+        scrollwheel: false,
+    });
+    //var icon = 'assets/dist/img/company/map-marker.png'
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map//,
+        //icon: icon,
+        //title: 'Hello World!'
+    });
 };
 
 function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
+    var la_fiesta = { lat: 20.305826, lng: 85.85480189999998 };
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: la_fiesta,
